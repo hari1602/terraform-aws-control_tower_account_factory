@@ -29,6 +29,16 @@ variable "audit_account_id" {
   }
 }
 
+variable "control_tower_execution_role_name" {
+  description = "IAM role name assumed in the AFT management, Audit, and Log Archive accounts"
+  type        = string
+  default     = "AWSControlTowerExecution"
+  validation {
+    condition     = length(var.control_tower_execution_role_name) > 0
+    error_message = "Variable var: control_tower_execution_role_name cannot be empty."
+  }
+}
+
 #########################################
 # General AFT Vars
 #########################################
